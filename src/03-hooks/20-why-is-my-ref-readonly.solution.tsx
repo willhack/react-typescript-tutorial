@@ -11,5 +11,6 @@ export const Component = () => {
 
   const thirdOverload = useRef<string>();
 
+  thirdOverload.current = "Hello";
   return null;
 };
