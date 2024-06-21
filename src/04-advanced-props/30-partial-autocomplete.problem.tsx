@@ -13,7 +13,7 @@ type Size = keyof typeof presetSizes;
  * a Size. But there's an issue (see below).
  */
 
-type LooseSize = Size | string;
+type LooseSize = Size | (string & {});
 
 export const Icon = (props: { size: LooseSize }) => {
   return (
@@ -22,12 +22,12 @@ export const Icon = (props: { size: LooseSize }) => {
         width:
           props.size in presetSizes
             ? presetSizes[
-                /**
-                 * The 'as' is necessary here because TS can't seem to narrow
-                 * props.size to Size properly
-                 */
-                props.size as Size
-              ]
+            /**
+             * The 'as' is necessary here because TS can't seem to narrow
+             * props.size to Size properly
+             */
+            props.size as Size
+            ]
             : props.size,
       }}
     />

@@ -4,6 +4,7 @@
     "jsx": "react-jsx",
     "module": "ES2022",
     "moduleResolution": "node",
+    "exactOptionalPropertyTypes": true,
     "noEmit": true,
     "isolatedModules": true,
     "moduleDetection": "force",

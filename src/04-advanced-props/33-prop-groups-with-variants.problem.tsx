@@ -19,7 +19,7 @@ const buttonPropsMap = {
     // @ts-expect-error
     illegalProperty: "whatever",
   },
-};
+} satisfies Record<string, ComponentProps<"button">>;
 
 type ButtonProps = {
   variant: keyof typeof buttonPropsMap;
@@ -54,7 +54,6 @@ const Parent = () => {
       <Button variant="next"></Button>
       <Button variant="reset"></Button>
       <Button variant="submit"></Button>
-
       {/* @ts-expect-error */}
       <Button variant="something"></Button>
       {/* @ts-expect-error */}
