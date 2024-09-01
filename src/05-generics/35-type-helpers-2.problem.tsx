@@ -8,15 +8,13 @@ import { ChangeEventHandler } from "react";
  * and returns it along with a union with all of its
  * keys turned to undefined.
  */
+type AllOrNone<T> = T | Partial<Record<keyof T, undefined>>;
+
 export type InputProps = (
-  | {
-      value: string;
-      onChange: ChangeEventHandler;
-    }
-  | {
-      value?: undefined;
-      onChange?: undefined;
-    }
+  AllOrNone<{
+    value: string;
+    onChange: ChangeEventHandler;
+  }>
 ) & {
   label: string;
 };
@@ -35,14 +33,14 @@ export const Input = ({ label, ...props }: InputProps) => {
 export const Test = () => {
   return (
     <div>
-      <Input label="Greeting" value="Hello" onChange={() => {}} />
+      <Input label="Greeting" value="Hello" onChange={() => { }} />
       <Input label="Greeting" />
 
       {/* @ts-expect-error */}
       <Input label="Greeting" value="Hello" />
 
       {/* @ts-expect-error */}
-      <Input label="Greeting" onChange={() => {}} />
+      <Input label="Greeting" onChange={() => { }} />
     </div>
   );
 };
